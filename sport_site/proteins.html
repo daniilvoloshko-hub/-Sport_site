@@ -13,39 +13,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="top" class="page">
 
-    <header>
-        <h1>Протеїн</h1>
-        <nav>
-            <a href="index.html">Головна</a>
-            <a href="proteins.html">Протеїн</a>
-            <a href="contacts.html">Контакти</a>
-        </nav>
+    <header class="header">
+        <h1 class="header__title">Протеїн</h1>
+        <nav class="nav">
+    <a href="index.html" class="nav__link">Головна</a>
+    <a href="proteins.html" class="nav__link">Протеїн</a>
+    <a href="contacts.html" class="nav__link">Контакти</a>
+    <a href="gallery.html" class="nav__link">Галерея</a>
+    <a href="js_practice.html" class="nav__link">JS Практика</a> </nav>
     </header>
 
-    <main>
-        <section>
+    <main class="main-container">
+        <section class="main-container__content">
             <h2>Що таке протеїн?</h2>
 
-            <p>
+            <p class="main-container__text">
                 Протеїн — це одна з найпопулярніших спортивних добавок у світі. Основною складовою протеїну є <strong>білок</strong>, який необхідний організму для <em>росту та відновлення м'язів</em>.
             </p>
 
-            <p>
+            <p class="main-container__text">
                 Найчастіше протеїн використовують спортсмени, люди які займаються фітнесом, бодібілдингом або просто ведуть активний спосіб життя.
             </p>
 
-            <p>
+            <p class="main-container__text">
                 Протеїнові коктейлі допомагають швидше отримати необхідну кількість білка після тренування.
             </p>
 
-            <img src="sport.jpg.png" alt="Протеїн">
+            <img src="sport.jpg.png" alt="Протеїн" class="main-container__img">
         </section>
 
-        <article>
+        <article class="main-container__content">
             <h2>Основні види протеїну</h2>
-            <ul>
+            <ul class="main-container__list">
                 <li><strong>Сироватковий протеїн</strong> — швидко засвоюється організмом.</li>
                 <li><strong>Казеїновий протеїн</strong> — повільно засвоюється та підходить для вживання перед сном.</li>
                 <li><strong>Соєвий протеїн</strong> — рослинний варіант для вегетаріанців.</li>
@@ -53,9 +54,9 @@
             </ul>
         </article>
 
-        <section>
+        <section class="main-container__content">
             <h2>Переваги протеїну</h2>
-            <ol>
+            <ol class="main-container__list">
                 <li>Допомагає росту м'язової маси</li>
                 <li>Покращує відновлення після тренувань</li>
                 <li>Зручний у використанні</li>
@@ -63,16 +64,9 @@
             </ol>
         </section>
 
-        <aside>
-            <h3>Корисна порада</h3>
-            <p>
-                Вживати протеїн потрібно відповідно до рекомендацій виробника та поєднувати з правильним харчуванням.
-            </p>
-        </aside>
-
-        <section>
+        <section class="main-container__content">
             <h2>Таблиця протеїнів</h2>
-            <table>
+            <table class="main-container__table">
                 <thead>
                     <tr>
                         <th>Вид</th>
@@ -95,10 +89,18 @@
                 </tbody>
             </table>
         </section>
+
+        <aside class="main-container__sidebar">
+            <h3>Корисна порада</h3>
+            <p class="main-container__text">
+                Вживати протеїн потрібно відповідно до рекомендацій виробника та поєднувати з правильним харчуванням.
+            </p>
+            <a href="#top" class="main-container__link-top">Повернутися догори</a>
+        </aside>
     </main>
 
-    <footer>
-        <p>© 2026 Інформація про протеїн — Довідник спортивних добавок</p>
+    <footer class="footer">
+        <p class="footer__text">© 2026 Інформація про протеїн — Довідник спортивних добавок</p>
     </footer>
 
 </body>

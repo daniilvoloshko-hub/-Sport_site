@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Практика — Лабораторна №3</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Додаткові прості стилі */
+        .js-task-box {
+            background: white;
+            border: 2px solid gray;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .js-main-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        /* Для завдання 2: Картинка, що стрибає */
+        #jumping-img {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+        /* Для завдання 4: Годинник */
+        #text-clock {
+            font-size: 24px;
+            font-weight: bold;
+            color: darkred;
+            background: #f0f0f0;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        /* Для завдання 5: Ефект витирання */
+        #fade-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            transition: opacity 0.1s linear;
+        }
+    </style>
+</head>
+<body class="page">
+
+    <header class="header">
+        <h1 class="header__title">Лабораторна робота №3: JavaScript</h1>
+        <nav class="nav">
+            <a href="index.html" class="nav__link">Головна</a>
+            <a href="proteins.html" class="nav__link">Протеїн</a>
+            <a href="contacts.html" class="nav__link">Контакти</a>
+            <a href="gallery.html" class="nav__link">Галерея</a>
+            <a href="js_practice.html" class="nav__link">JS Практика</a>
+        </nav>
+    </header>
+
+    <img id="jumping-img" src="https://cdn-icons-png.flaticon.com/512/2964/2964514.png" alt="Спортивна іконка" style="display:none; left:0px; top:0px;">
+
+    <main class="js-main-container">
+
+
+
+
+        <div class="js-task-box">
+            <h2>Завдання 1: Функція зміни розміру тексту</h2>
+            <div id="task1-output"></div>
+        </div>
+
+        <div class="js-task-box">
+            <h2>Завдання 2: Картинка, що стрибає по екрану</h2>
+            
+            <button onclick="toggleJumpingImg()" class="nav__link" style="background: darkred; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px;">Увімкнути / Вимкнути картинку</button>
+        </div>
+
+        <div class="js-task-box" id="task3-container">
+            <h2>Завдання 3: Зміна розміру всіх тегів &lt;p&gt;</h2>
+            <p>Це перший тестовий абзац.</p>
+            <p>Це другий тестовий абзац для перевірки скрипта.</p>
+            <p>Це третій абзац.</p>
+            <button onclick="changeParagraphsSize()" class="nav__link" style="background: darkblue; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px;">Змінити розмір всіх &lt;p&gt; на 15px</button>
+        </div>
+
+        <div class="js-task-box">
+            <h2>Завдання 4: Текстовий годинник</h2>
+            <div id="text-clock">00:00:00</div>
+        </div>
+
+        <div class="js-task-box">
+            <h2>Завдання 5: Ефект поступового витирання тексту</h2>
+            <p id="fade-text">Цей текст поступово зникне </p>
+            <button onclick="startFading()" class="nav__link" style="background: green; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px;">Запустити витирання тексту</button>
+        </div>
+		
+		
+		
+		
+		
+		
+	
+	
+<h1 style="color: darkblue; margin-top: 40px; border-bottom: 3px solid darkblue; padding-bottom: 10px;">Блок 2</h1>
+        <div class="js-task-box" style="position: relative; min-height: 120px;">
+<h2>Завдання 2.3 : Зміна кольору квадрата через список</h2>
+            <div style="display: flex; gap: 40px; align-items: center;">
+                <div>
+                    <label for="color-select" style="font-weight: bold;">Оберіть колір:</label><br>
+                    <select id="color-select" onchange="changeSquareColor()" style="padding: 5px; font-size: 16px; margin-top: 5px;">
+                        <option value="black">Чорний (За замовчуванням)</option>
+                        <option value="red">Червоний</option>
+                        <option value="green">Зелений</option>
+                        <option value="blue">Синій</option>
+                        <option value="orange">Помаранчевий</option>
+                    </select>
+                </div>
+                <div id="color-square" style="width: 80px; height: 80px; background-color: black; border: 2px solid #333; transition: background-color 0.3s;"></div>
+            </div>
+        </div>
+
+        <div class="js-task-box" id="mouse-key-box" style="cursor: crosshair;">
+            <h2>Завдання 2.4: Координати мишки та код клавіші</h2>
+            <p style="color: gray; font-size: 14px;">Порухайте мишкою всередині цього блоку або натисніть будь-яку клавішу на клавіатурі.</p>
+            <div style="display: flex; gap: 20px;">
+                <div style="background: #eef; padding: 10px; border-radius: 5px; font-weight: bold;">
+                    Координати миші: <span id="mouse-coords" style="color: darkblue;">X: 0, Y: 0</span>
+                </div>
+                <div style="background: #efe; padding: 10px; border-radius: 5px; font-weight: bold;">
+                    Код натиснутої клавіші: <span id="key-code" style="color: darkgreen;">Натисніть щось...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="js-task-box">
+            <h2>Завдання 2.6 : Розфарбовування літер фрази по колу</h2>
+            <div id="colored-text-output" style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin-top: 15px;"></div>
+        </div>
+
+        <div class="js-task-box">
+            <h2>Завдання 2.7 : Розрахунок переплати по іпотеці</h2>
+            <p>Умови: Кредит = 1 000 000 грн, Ставка = 10%, Термін = 5 років.</p>
+            <button onclick="calculateMortgage()" class="nav__link" style="background: darkorange; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; font-weight: bold;">Розрахувати переплату</button>
+            <div id="mortgage-output" style="margin-top: 15px; font-size: 18px; font-weight: bold; color: darkred;"></div>
+        </div>
+		
+		
+		
+		
+		
+		
+		<h1 style="color: darkred; margin-top: 40px; border-bottom: 3px solid darkred; padding-bottom: 10px;">Блок 3</h1>
+        <div class="js-task-box">
+            <h2>Завдання 3.4: Пошук номерів кредитних карток (Регулярні вирази)</h2>
+            <p style="background: #fdf6e3; padding: 10px; border-left: 4px solid #b58900; font-style: italic;">
+                "Іван вчора втратив свою кредитку, її номер 1178-9087-2384-8787. Тому він пішов в банк і описав ситуацію. Там пішли йому назустріч і видали нову кредитку під номером: 1103-8899-0811-1722"
+            </p>
+            <button onclick="findCreditCards()" class="nav__link" style="background: #b58900; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; font-weight: bold;">Знайти номери карток</button>
+            <div id="cards-output" style="margin-top: 15px; font-size: 16px; font-weight: bold; color: green;"></div>
+        </div>
+
+        <div class="js-task-box">
+            <h2>Завдання 3.5 : Звідки ви прийшли та версія вашого браузера</h2>
+            <button onclick="showBrowserInfo()" class="nav__link" style="background: #2aa198; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; font-weight: bold;">Дізнатися інформацію</button>
+            <div id="browser-output" style="margin-top: 15px; font-size: 16px; font-weight: bold; line-height: 1.6;"></div>
+        </div>
+		
+		
+		
+		
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2026 Спортивний довідник — Лабораторна №3</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // ЗАВДАННЯ 1: Функція різного розміру тексту 
+        // ==========================================
+        function printCustomText(text, fontSizeValue) {
+            const outputDiv = document.getElementById('task1-output');
+            
+            const newSpan = document.createElement('span');
+            newSpan.textContent = text + " (" + fontSizeValue + ") ";
+            
+            newSpan.style.fontSize = fontSizeValue;
+            newSpan.style.display = "block";
+            newSpan.style.marginBottom = "5px";
+            outputDiv.appendChild(newSpan);
+        }
+
+        
+        printCustomText("Спортивне харчування", "14px");
+        printCustomText("Збільшує витривалість", "20px");
+        printCustomText("Гарантований результат!", "28px");
+
+
+        // ==========================================
+        // ЗАВДАННЯ 2: Картинка, що стрибає щосекунди
+        // ==========================================
+        let jumpingInterval = null;
+        
+        function toggleJumpingImg() {
+            const img = document.getElementById('jumping-img');
+            
+            if (jumpingInterval) {
+                clearInterval(jumpingInterval);
+                jumpingInterval = null;
+                img.style.display = "none";
+            } else {
+                img.style.display = "block";
+                
+                jumpingInterval = setInterval(function() {
+                    
+                    const randomX = Math.floor(Math.random() * (window.innerWidth - 60));
+                    const randomY = Math.floor(Math.random() * (window.innerHeight - 60));
+                    
+                    
+                    img.style.left = randomX + 'px';
+                    img.style.top = randomY + 'px';
+                }, 1000);
+            }
+        }
+
+
+        // ==========================================
+        // ЗАВДАННЯ 3: Знайти всі <p> і змінити розмір на 15px
+        // ==========================================
+        function changeParagraphsSize() {
+            
+            const paragraphs = document.getElementsByTagName('p');
+            
+            for (let i = 0; i < paragraphs.length; i++) {
+                
+                paragraphs[i].setAttribute('style', 'font-size: 15px; color: #555;');
+            }
+        }
+
+
+        // ==========================================
+        // ЗАВДАННЯ 4: Текстовий годинник
+        // ==========================================
+        function updateClock() {
+            const clockDiv = document.getElementById('text-clock');
+            const now = new Date();
+            
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            clockDiv.textContent = hours + ":" + minutes + ":" + seconds;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock(); 
+
+
+        // ==========================================
+        // ЗАВДАННЯ 5: Ефект поступового витирання
+        // ==========================================
+        function startFading() {
+            const textElement = document.getElementById('fade-text');
+            let currentOpacity = 1; 
+            
+            const fadeTimer = setInterval(function() {
+                currentOpacity -= 0.05; 
+                
+                if (currentOpacity <= 0) {
+                    currentOpacity = 0;
+                    clearInterval(fadeTimer); 
+                    textElement.textContent = "[Текст повністю витерто]";
+                    textElement.style.color = "gray";
+                    textElement.style.opacity = 1;
+                } else {
+                    textElement.style.opacity = currentOpacity;
+                }
+            }, 100); 
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// ==========================================
+        // БЛОК 2. ЗАВДАННЯ 3: Зміна кольору квадрата
+        // ==========================================
+        function changeSquareColor() {
+            const select = document.getElementById('color-select');
+            const square = document.getElementById('color-square');
+            
+            square.style.backgroundColor = select.value;
+        }
+
+
+        // ==========================================
+        // БЛОК 2. ЗАВДАННЯ 4: Координати мишки та код клавіші
+        // ==========================================
+        const infoBox = document.getElementById('mouse-key-box');
+        
+        
+        infoBox.addEventListener('mousemove', function(event) {
+            const coordsSpan = document.getElementById('mouse-coords');
+            
+            const x = event.offsetX;
+            const y = event.offsetY;
+            coordsSpan.textContent = "X: " + x + ", Y: " + y;
+        });
+
+        
+        window.addEventListener('keydown', function(event) {
+            const codeSpan = document.getElementById('key-code');
+            
+            codeSpan.textContent = event.key + " (Код: " + event.code + ")";
+        });
+
+
+        // ==========================================
+        // БЛОК 2. ЗАВДАННЯ 6: Розфарбовування літер по колу
+        // ==========================================
+        function colorizeText() {
+            const phrase = "СПОРТИВНЕ ХАРЧУВАННЯ";
+           
+            const colors = ["red", "green", "blue", "orange", "purple"];
+            const outputContainer = document.getElementById('colored-text-output');
+            
+            
+            outputContainer.innerHTML = "";
+            
+            
+            for (let i = 0; i < phrase.length; i++) {
+                const letterSpan = document.createElement('span');
+                letterSpan.textContent = phrase[i];
+                
+               
+                if (phrase[i] !== " ") {
+                    
+                    const colorIndex = i % colors.length;
+                    letterSpan.style.color = colors[colorIndex];
+                }
+                
+                outputContainer.appendChild(letterSpan);
+            }
+        }
+        
+        colorizeText();
+
+
+        // ==========================================
+        // БЛОК 2. ЗАВДАННЯ 7: Розрахунок переплати по кредиту
+        // ==========================================
+        function calculateMortgage() {
+            
+            const S = 1000000; 
+            const p = 10;      
+            const years = 5;   
+            
+            
+            
+            let perepl = S * (p / 100) * years;
+            
+            
+            const output = document.getElementById('mortgage-output');
+            output.textContent = "Значення змінної perepl = " + perepl.toLocaleString() + " грн.";
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// ==========================================
+        // БЛОК 3. ЗАВДАННЯ 4: Регулярний вираз для карт
+        // ==========================================
+        function findCreditCards() {
+           
+            const text = "Іван вчора втратив свою кредитку, її номер 1178-9087-2384-8787. Тому він пішов в банк і описав ситуацію. Там пішли йому назустріч і видали нову кредитку под номером: 1103-8899-0811-1722";
+            
+            
+            const cardRegex = /\d{4}-\d{4}-\d{4}-\d{4}/g;
+            
+           
+            const result = text.match(cardRegex);
+            
+            
+            const output = document.getElementById('cards-output');
+            if (result) {
+                output.innerHTML = "Знайдено карток: " + result.length + "<br>" +
+                                   "1-ша картка: " + result[0] + "<br>" +
+                                   "2-га картка: " + result[1];
+                console.log("Змінна result:", result); 
+            } else {
+                output.textContent = "Номери карток не знайдено.";
+            }
+        }
+
+
+        // ==========================================
+        // БЛОК 3. ЗАВДАННЯ 5: Звідки прийшли та версія браузера
+        // ==========================================
+        function showBrowserInfo() {
+            
+            const referrer = document.referrer || "Ви зайшли на сторінку напряму (не за посиланням)";
+            
+            
+            const userAgent = navigator.userAgent;
+            const appVersion = navigator.appVersion;
+            
+         
+            const output = document.getElementById('browser-output');
+            output.innerHTML = "<strong>Звідки ви прийшли (Referrer):</strong> " + referrer + "<br>" +
+                               "<strong>Повна версія браузера (UserAgent):</strong> " + userAgent + "<br>" +
+                               "<strong>Коротка версія (AppVersion):</strong> " + appVersion;
+        }
+		
+		
+		
+		
+		
+	
+    </script>
+</body>
+</html>

@@ -1,22 +1,30 @@
-body {
+
+.page {
     background-color: #d8f3ff;
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
     font-family: Arial, sans-serif; 
     margin: 0;
 }
 
-header {
+#top {
+    scroll-behavior: smooth;
+}
+
+.header {
     background-color: darkblue;
     color: white;
     text-align: center;
     padding: 20px;
 }
 
-nav {
+.header__title {
+    margin: 0;
+}
+
+.nav {
     margin-top: 15px;
 }
 
-nav a {
+.nav__link {
     color: white;
     text-decoration: none;
     margin: 15px;
@@ -24,85 +32,101 @@ nav a {
     cursor: pointer; 
 }
 
-nav a:hover {
+.nav__link:hover {
     color: yellow;
 }
 
-main {
+
+.main-container {
     padding: 20px;
+    
+   
+    display: grid;
+    
+   
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
 }
 
 
-section,
-article,
-aside {
+.main-container__content {
+    grid-column: 1; 
     background-color: white;
-    margin: 20px;
     padding: 15px;
     border: 2px solid gray; 
     border-radius: 10px;
 }
 
-h2 {
-    color: darkred;
+
+.main-container__sidebar {
+    grid-column: 2; 
+    
+    grid-row: 1 / span 10; 
+    
+    background-color: white;
+    padding: 15px;
+    border: 2px solid gray; 
+    border-radius: 10px;
+    align-self: start;
 }
 
-p {
+
+h2 {
+    color: darkred;
+    margin-top: 0;
+}
+
+.main-container__text {
     font-size: 18px;
     text-align: justify; 
 }
 
-img {
+
+.main-container__text_important {
+    color: red;
+    background-color: yellow;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.main-container__img {
     width: 300px;
     border: 3px solid black;
 }
 
-
-ul, ol {
+.main-container__list {
     margin-left: 20px;
     padding-left: 10px;
 }
 
-
-table {
-    width: 70%;
-    border-collapse: collapse;
-    margin: 15px 0;
-}
-
-table,
-th,
-td {
-    border: 2px solid black;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: center;
-}
-
-
-.important {
-    color: red;
-    background-color: yellow;
-    font-weight: bold;
-}
-
-
-#top {
-    scroll-behavior: smooth;
-}
-
-
-aside a {
+.main-container__link-top {
     color: darkblue;
     font-weight: bold;
     text-decoration: underline;
     cursor: cell; 
 }
 
-footer {
+
+.main-container__table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.main-container__table,
+.main-container__table th,
+.main-container__table td {
+    border: 2px solid black;
+}
+
+.main-container__table th,
+.main-container__table td {
+    padding: 10px;
+    text-align: center;
+}
+
+
+.footer {
     background-color: black;
     color: white;
     text-align: center;
@@ -110,15 +134,223 @@ footer {
     margin-top: 20px;
 }
 
-
-button {
-    background-color: darkblue;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer; 
+.footer__text {
+    margin: 0;
 }
 
-button:hover {
-    background-color: green;
+
+
+#gallery-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important; 
+    gap: 20px !important;
+    padding: 40px 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    background: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+
+.g-card {
+    background-color: white !important;
+    border: 2px solid #888 !important;
+    border-radius: 10px !important;
+    padding: 20px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+    box-sizing: border-box !important;
+}
+
+
+.g-stub {
+    height: 110px !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+    color: #222 !important;
+    margin-bottom: 15px !important;
+}
+
+.g-title {
+    color: darkred !important;
+    margin: 10px 0 !important;
+    font-size: 19px !important;
+    font-weight: bold !important;
+}
+
+.g-text {
+    font-size: 14px !important;
+    color: #444 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+}
+
+
+.fixed-badge {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    background-color: darkred !important;
+    color: white !important;
+    width: 60px !important;
+    height: 60px !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 0px !important; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+    transition: all 0.4s ease !important;
+    z-index: 9999 !important;
+}
+
+
+.fixed-badge:hover {
+    border-radius: 50% !important; 
+    transform: scale(1.1) rotate(45deg) !important; 
+    background-color: green !important; 
+}
+
+
+
+
+@media (max-width: 650px) and (orientation: portrait) {
+    #gallery-grid {
+        grid-template-columns: 1fr !important; 
+    }
+}
+
+
+@media (max-width: 950px) and (orientation: landscape) {
+    #gallery-grid {
+        grid-template-columns: 1fr 1fr !important; 
+    }
+}
+
+
+
+.block3-container {
+    max-width: 1200px !important;
+    margin: 20px auto !important;
+    padding: 20px !important;
+    background-color: white !important;
+    border: 2px solid gray !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 40px !important;
+    box-sizing: border-box !important;
+    width: calc(100% - 40px) !important;
+}
+
+.progress-section, .checkbox-section {
+    flex: 1 !important;
+    min-width: 280px !important;
+    text-align: left !important;
+}
+
+.block3-title {
+    color: darkblue !important;
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+
+.progress-bar {
+    background-color: #e0e0e0 !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 30px !important;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+.progress-bar__fill {
+    background-color: green !important;
+    height: 100% !important;
+    width: 0; /* Старт з нуля для анімації */
+    color: white !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    
+    animation: fillProgress 2s ease-in-out forwards !important;
+}
+
+
+@keyframes fillProgress {
+    to { width: 75%; }
+}
+
+
+.custom-checkbox {
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+
+.custom-checkbox__input {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+
+.custom-checkbox__label {
+    position: relative !important;
+    padding-left: 35px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    user-select: none !important;
+    display: inline-block !important;
+    line-height: 22px !important;
+}
+
+.custom-checkbox__label::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 22px !important;
+    height: 22px !important;
+    border: 2px solid darkred !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+    transition: all 0.3s ease !important;
+}
+
+
+.custom-checkbox__input:checked + .custom-checkbox__label::before {
+    background-color: green !important;
+    border-color: green !important;
+}
+
+
+.custom-checkbox__label::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 8px !important;
+    top: 4px !important;
+    width: 6px !important;
+    height: 11px !important;
+    border: solid white !important;
+    border-width: 0 3px 3px 0 !important;
+    transform: rotate(45deg) scale(0) !important;
+    transition: transform 0.2s ease !important;
+}
+
+
+.custom-checkbox__input:checked + .custom-checkbox__label::after {
+    transform: rotate(45deg) scale(1) !important;
 }
